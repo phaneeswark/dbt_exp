@@ -19,3 +19,23 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: analytics_report
+    description: "Aggregate analytics report summarising both upstream models"
+    columns:
+      - name: total_rows_first_model
+        description: "Total row count from my_first_dbt_model"
+      - name: valid_rows_first_model
+        description: "Rows with a non-null id in my_first_dbt_model"
+      - name: null_rows_first_model
+        description: "Rows with a null id in my_first_dbt_model"
+      - name: valid_pct
+        description: "Percentage of valid (non-null) rows"
+      - name: null_pct
+        description: "Percentage of null rows"
+      - name: total_rows_second_model
+        description: "Total row count from my_second_dbt_model"
+      - name: min_id_second_model
+        description: "Minimum id value in my_second_dbt_model"
+      - name: max_id_second_model
+        description: "Maximum id value in my_second_dbt_model"
