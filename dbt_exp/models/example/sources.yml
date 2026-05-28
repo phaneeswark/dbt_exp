@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: snowflake_raw
+    description: "Raw data loaded from Snowflake"
+    database: RAW_DB
+    schema: PUBLIC
+    tables:
+      - name: orders
+        description: "Raw orders data from the source system"
+        columns:
+          - name: order_id
+            description: "Unique identifier for each order"
+            tests:
+              - unique
+              - not_null
+          - name: customer_id
+            description: "Foreign key to the customers table"
+            tests:
+              - not_null
+          - name: order_date
+            description: "Date when the order was placed"
+          - name: status
+            description: "Current status of the order"
+          - name: amount
+            description: "Total order amount"
+
+      - name: customers
+        description: "Raw customers data from the source system"
+        columns:
+          - name: customer_id
+            description: "Unique identifier for each customer"
+            tests:
+              - unique
+              - not_null
+          - name: first_name
+            description: "Customer first name"
+          - name: last_name
+            description: "Customer last name"
+          - name: email
+            description: "Customer email address"
+            tests:
+              - unique
+          - name: created_at
+            description: "Timestamp when the customer record was created"
